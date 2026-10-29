@@ -3,21 +3,28 @@ package dev.lpa;
 import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
-        int[] myIntArray = new int[5];
-        int[] anotherArray = myIntArray;
+    public static void main(String... args) {
+        System.out.println("Hello World again");
 
-        System.out.println("myIntArray = " + Arrays.toString(myIntArray));
-        System.out.println("anotherArray = " + Arrays.toString(anotherArray));
+        String[] splitStrings = "Hello World again".split(" ");
+        printText(splitStrings);
 
-        anotherArray[0] = 1;
-        modifyArray(myIntArray);
+        System.out.println("_".repeat(20));
+        printText("Hello");
 
-        System.out.println("after change myIntArray = " + Arrays.toString(myIntArray));
-        System.out.println("after change anotherArray = " + Arrays.toString(anotherArray));
+        System.out.println("_".repeat(20));
+        printText("Hello", "World", "again");
+
+        System.out.println("_".repeat(20));
+        printText();
+
+        String[] sArray = {"first", "second", "third", "fourth", "fifth"};
+        System.out.println(String.join(",", sArray));
     }
 
-    private static void modifyArray(int[] array) {
-        array[1] = 2;
+    private static void printText(String... textList) {
+        for (String t : textList) {
+            System.out.println(t);
+        }
     }
 }
