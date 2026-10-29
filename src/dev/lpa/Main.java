@@ -1,50 +1,23 @@
 package dev.lpa;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int[] unsortedArray = getRandomArray(5);
-        System.out.println(Arrays.toString(unsortedArray));
+        int[] myIntArray = new int[5];
+        int[] anotherArray = myIntArray;
 
-        int[] sortedArray = sortIntegers(new int[]{7, 30, 35});
+        System.out.println("myIntArray = " + Arrays.toString(myIntArray));
+        System.out.println("anotherArray = " + Arrays.toString(anotherArray));
+
+        anotherArray[0] = 1;
+        modifyArray(myIntArray);
+
+        System.out.println("after change myIntArray = " + Arrays.toString(myIntArray));
+        System.out.println("after change anotherArray = " + Arrays.toString(anotherArray));
     }
 
-    public static int[] getRandomArray(int len) {
-        Random random = new Random();
-        System.out.println("random = " + random);
-
-        int[] randomArray = new int[len];
-        for (int i = 0; i < len; i++) {
-            randomArray[i] = random.nextInt(1000);
-        }
-
-        return randomArray;
-    }
-
-    private static int[] sortIntegers(int[] array) {
-        System.out.println(Arrays.toString(array));
-
-        int[] sortedArray = Arrays.copyOf(array, array.length);
-        boolean flag = true;
-        int temp;
-        while (flag) {
-            flag = false;
-            for (int i = 0; i < sortedArray.length - 1; i++) {
-                if (sortedArray[i] < sortedArray[i + 1]) {
-                    temp = sortedArray[i];
-                    sortedArray[i] = sortedArray[i + 1];
-                    sortedArray[i + 1] = temp;
-                    flag = true;
-                    System.out.println("=====>" + Arrays.toString(sortedArray));
-                }
-            }
-            System.out.println("-->" + Arrays.toString(sortedArray));
-
-        }
-
-        return sortedArray;
+    private static void modifyArray(int[] array) {
+        array[1] = 2;
     }
 }
