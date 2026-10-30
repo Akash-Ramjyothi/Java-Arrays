@@ -1,30 +1,41 @@
 package dev.lpa;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String... args) {
-        System.out.println("Hello World again");
+        int[] returnedArray = readIntegers();
+        System.out.println(Arrays.toString(returnedArray));
 
-        String[] splitStrings = "Hello World again".split(" ");
-        printText(splitStrings);
-
-        System.out.println("_".repeat(20));
-        printText("Hello");
-
-        System.out.println("_".repeat(20));
-        printText("Hello", "World", "again");
-
-        System.out.println("_".repeat(20));
-        printText();
-
-        String[] sArray = {"first", "second", "third", "fourth", "fifth"};
-        System.out.println(String.join(",", sArray));
+        int returnedMin = findMin(returnedArray);
+        System.out.println("min = " + returnedMin);
     }
 
-    private static void printText(String... textList) {
-        for (String t : textList) {
-            System.out.println(t);
+    private static int[] readIntegers() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a list of integers, separated by commas: ");
+        String input = scanner.nextLine();
+
+        String[] splits = input.split(",");
+        int[] values = new int[splits.length];
+
+        for (int i = 0; i < splits.length; i++) {
+            values[i] = Integer.parseInt(splits[i].trim());
         }
+
+        return values;
+    }
+
+    private static int findMin(int[] array) {
+        int min = Integer.MAX_VALUE;
+
+        for (int el : array) {
+            if (el < min) {
+                min = el;
+            }
+        }
+
+        return min;
     }
 }
